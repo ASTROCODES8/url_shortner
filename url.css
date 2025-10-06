@@ -1,0 +1,176 @@
+/* --- CSS Variables (Theme Module) --- */
+:root {
+    --primary-pink: #E84393;
+    --primary-pink-hover: #d83682;
+    --secondary-pink: #FF7BAC;
+    --light-bg: #FFF0F5;
+    --dark-text: #3b3030;
+    --light-text: #9e9aa7;
+    --white: #ffffff;
+    --danger: #F46A6A;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* --- General Styles (Base Module) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--light-bg);
+    color: var(--dark-text);
+    padding: 2rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* --- Button Styles (Component Module) --- */
+.btn {
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn--primary {
+    background-color: var(--primary-pink);
+    color: var(--white);
+}
+
+.btn--primary:hover {
+    background-color: var(--primary-pink-hover);
+}
+
+.btn:disabled {
+    background-color: var(--light-text);
+    cursor: not-allowed;
+}
+
+/* --- Shortener Form (Form Module) --- */
+.shortener__title {
+    font-size: 2.5rem;
+    color: var(--dark-text);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.shortener__form {
+    display: flex;
+    gap: 1rem;
+}
+
+.input-container {
+    flex-grow: 1;
+    position: relative;
+}
+
+.shortener__input {
+    width: 100%;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    transition: border-color 0.3s ease;
+}
+
+.shortener__input:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+}
+
+/* Error styles */
+.shortener__input.error {
+    border-color: var(--danger);
+}
+
+.error-message {
+    color: var(--danger);
+    font-size: 0.8rem;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 5px;
+    display: none; /* Hidden by default */
+}
+
+.error-message.show {
+    display: block; /* Shown via JS */
+}
+
+.link-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-top: 1rem;
+}
+
+.link-card__original {
+    color: var(--dark-text);
+    font-weight: 500;
+    word-break: break-all;
+    margin-right: 1rem;
+}
+
+.link-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+}
+
+.link-card__short {
+    color: var(--secondary-pink);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.btn--copy {
+    background-color: var(--dark-text);
+    color: var(--white);
+    width: 100px; 
+}
+
+.btn--copy.copied {
+    background-color: var(--secondary-pink);
+}
+
+@media (max-width: 768px) {
+    .shortener__title {
+        font-size: 2rem;
+    }
+    
+    .shortener__form {
+        flex-direction: column;
+    }
+    
+    .link-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .link-card__original {
+        width: 100%;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid #eee;
+        margin-right: 0;
+    }
+}
